@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500&family=Noto+Sans+Modi&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    <style>
+        .navbar {
+            font-family: 'Inter', sans-serif;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-family: 'Noto Sans Modi', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 16px;
+        }
+        body {
+            font-family: Inter;
+            background-color: #2400FF;
+            margin: 16px 100px;
+            color: white;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+        #container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: auto;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+        #container2 {
+            display: flex;
+            flex-direction: row;
+            width: auto;
+            flex-wrap: wrap;
+            gap: 64px;
+            justify-content: center;
+            align-items: center;
+        }
+        .rightsec {
+            width: 450px !important;
+        }
+        .navbar {
+            top: 16px;
+            display: flex;
+            flex-direction: row;
+            gap: 36px;
+            font-size: 24px;
+            white-space: nowrap;
+        }
+        .right a,.right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .card {
+            width: 350px;
+            background: white;
+            color: black;
+            border-radius: 25px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: space-between;
+        }
+        .uppersec {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            justify-content: space-between;
+        }
+        .bottomsec img{
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 25px !important;
+            aspect-ratio: 1;
+        }
+        #defaultCanvas0 {
+            border-radius: 25px !important;
+        }
+        .card img{
+            height: 64px;
+            width: 64px;
+            border-radius: 15px;
+            aspect-ratio: 1;
+        }
+        .left {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 500;
+        }
+        .tags {
+            display: flex;
+            gap: 8px;
+            width: auto;
+            flex-wrap: wrap;
+            height: auto;
+        }
+        .tag {
+            white-space: nowrap;
+            overflow: hidden;
+            display: flex;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 15px;
+            border: 2px solid black;
+            gap: 4px;
+            align-items: center;
+        }
+        .tag img {
+            width: 12px;
+            height: fit-content;
+            border-radius: 0px;
+        }
+        footer {
+            padding-top: 24px !important;
+            position: relative;
+            margin-top: auto;
+            bottom: 16px;
+            margin-top: 16px;
+        }
+        img {
+            width: 100%;
+            border-radius: 25px;
+            aspect-ratio: 1;
+        }
+        a:visited,a:active,a:link {
+            text-decoration: none;
+            color: black;
+        }
+        .navbar a:visited,a:active,a:link {
+            text-decoration: none;
+            color: white;
+        }
+        .livetag{
+            border: 2px solid rgb(255, 0, 0);
+            color: red;
+            font-weight: 500;
+            width: fit-content;
+            padding: 4px 8px;
+            border-radius: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            height: fit-content;
+        }
+        .livetag img {
+            width: 12px !important;
+            height: 12px !important;
+            height: fit-content;
+            border-radius: 0px !important;
+        }
+        .betatag{
+            border: 1px solid #FFC700;
+            color: #FFC700;
+            font-weight: 500;
+            width: fit-content;
+            padding: 4px 8px;
+            border-radius: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .social img{
+            width: 36px !important;
+            border-radius: 0 !important;
+        } 
+        footer {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+        #pratham{
+            width: 350px !important;
+        }
+        @media only screen and (max-width: 768px) {
+            body {
+            margin: 16px 16px !important;
+        }
+        #container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 100%;
+            height: auto;
+            background: white;
+            color: black;
+            border-radius: 25px;
+            padding: 16px;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            justify-content: space-between;
+        }
+        .uppersec {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            justify-content: space-between;
+        }
+        .bottomsec {
+            display: none;
+        }
+        #container2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+        .rightsec {
+            width: auto !important;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#container" class="Home">/𑘢𑘿𑘨𑘎𑘩𑘿𑘢</a>
+        <a href="#container2" class="About">/𑘭𑘿𑘪𑘝𑘾𑘤𑘟𑘿𑘟𑘩</a>
+    </div>
+    <div id="container">
+        <div class="card" class="card1">
+            <div class="uppersec">
+                <div class="left">
+                    <div class="title">WebTV</div>
+                <div class="tags">
+                    <div class="tag">UX</div>
+                    <a href="https://github.com/praxham/WebTV"><div class="tag">Web-Dev<img src="openlink.svg"></div></a>
+                </div>
+                </div>
+                <div class="right">
+                    <a href="https://praxham.github.io/WebTV/"><img src="wtvlogo.svg" alt="">
+                    <div class="livetag">LIVE<img src="redopenlink.svg"></div></a>
+                </div>
+            </div>
+            <div class="bottomsec">
+                <img src="MockupWTV.png" alt="">
+            </div>
+        </div>
+        <div class="card">
+            <div class="uppersec">
+                <div class="left">
+                    <div class="title">घड्याळ</div>
+                <div class="tags">
+                    <a href=""><div class="tag">UX</div></a>
+                    <a href="https://github.com/praxham/ghadyal"><div class="tag">Web-Dev<img src="openlink.svg"></div></a>
+                    <div class="tag">Inclusivity</div>
+                </div>
+                </div>
+                <div class="right">
+                    <a href="https://praxham.github.io/ghadyal/"><img src="glogo.svg" alt="">
+                    <div class="livetag">LIVE<img src="redopenlink.svg"></div></a>
+                </div>
+            </div>
+            <div class="bottomsec">
+                <img src="MockupG.png" alt="">
+            </div>
+        </div>
+        <div class="card">
+            <div class="uppersec">
+                <div class="left">
+                    <div class="title">QR Cards</div>
+                <div class="tags">
+                    <a href="https://www.behance.net/gallery/170713923/QR-Cards-WebApp-Case-Study"><div class="tag">UX<img src="openlink.svg"></div></a>
+                    <a href="https://github.com/praxham/qrcards"><div class="tag">Web-Dev<img src="openlink.svg"></div></a>
+                    <div class="tag">Privacy</div>
+                </div>
+                </div>
+                <div class="right">
+                    <a href="https://praxham.github.io/qrcards/"><img src="qrclogo.svg" alt="">
+                    <div class="betatag">BETA</div></a>
+                </div>
+            </div>
+            <div class="bottomsec">
+                <img src="MockupQRC.png" alt="">
+            </div>
+        </div>
+        <div class="card">
+            <div class="uppersec">
+                <div class="left">
+                    <div class="title">Finding Electromagnetic Field</div>
+                <div class="tags">
+                    <a href=""><div class="tag">UX</div></a>
+                    <a href="https://github.com/praxham/findingelectromagnticfield"><div class="tag">Web-Dev<img src="openlink.svg"></div></a>
+                    <div class="tag">IOT</div>
+                </div>
+                </div>
+                <div class="right">
+                    <a href="https://praxham.github.io/findingelectromagnticfield/"><img src="femflogo.svg" alt="">
+                    <div class="livetag">LIVE<img src="redopenlink.svg"></div></a>
+                </div>
+            </div>
+            <div class="bottomsec">
+                <img src="MockupFEMF.png" alt="">
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='https://www.instagram.com/p/Cx2MvvoyLN5/'">
+            <div class="uppersec">
+                <div class="left">
+                    <div class="title">Saree Kimono</div>
+                <div class="tags">
+                    <div class="tag">Clothing Design</div>
+                    <div class="tag">Hand-Stitching</div>
+                </div>
+                </div>
+                <div class="right">
+                    <img src="kimono.png" alt="">
+                </div>
+            </div>
+            <div class="bottomsec">
+                <img src="kimono.png" alt="">
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='https://www.instagram.com/p/Cfoa4R5rgzy/'">
+            <div class="uppersec">
+                <div class="left">
+                    <div class="title">Vibrant Queen</div>
+                <div class="tags">
+                    <div class="tag">Image Manipulation</div>
+                    <div class="tag">Photography</div>
+                </div>
+                </div>
+                <div class="right">
+                    <img src="vibrant queen.jpg" alt="">
+                </div>
+            </div>
+            <div class="bottomsec">
+                <img src="vibrant queen.jpg" alt="">
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='https://www.instagram.com/p/CfobHYhreMs/'">
+            <div class="uppersec">
+                <div class="left">
+                    <div class="title">Clonned Flower</div>
+                <div class="tags">
+                    <div class="tag">Image Manipulation</div>
+                    <div class="tag">Photography</div>
+                </div>
+                </div>
+                <div class="left">
+                    <img src="cloned flower 1.png" alt="">
+                </div>
+            </div>
+            <div class="bottomsec">
+                <img src="cloned flower 1.png" alt="">
+            </div>
+        </div>
+        <div class="card" onclick="window.location.href='https://praxham.github.io/theorigin/'">
+            <div class="uppersec">
+                <div class="left">
+                    <div class="title">The Origin</div>
+                <div class="tags">
+                    <div class="tag">Generative Artwork</div>
+                    <div class="tag">Creative Coding</div>
+                </div>
+                </div>
+                <div class="right">
+                    <img src="origin.png" alt="">
+                    <div class="livetag">LIVE<img src="redopenlink.svg"></div>
+                </div>
+            </div>
+            <div class="bottomsec" id="origincanvas">
+            </div>
+        </div>
+    </div>
+    <div id="container2">
+        <div class="leftsec">
+            <img id="pratham" src="pfp1.png">
+        </div>
+        <div class="rightsec">
+            <div>
+                <h3>Pratham Patnakar 🐙 | UX Designer 📱</h3>
+                Experienced and innovative UX Designer and Maker with a Bachelor's Degree in Information Technology from Siddharth College, Mumbai. 
+            </div>
+            <div>
+                <h3>Professional Experience 💼</h3>
+                <b>UX Designer:</b> Contributed my skills to multiple companies, accumulating a year of experience in crafting user-centric designs that prioritize both aesthetics and functionality.<br>
+                <b>Frontend Web-Designer (4+ years):</b> Developed groundbreaking web applications tailored to the needs of my community. Noteworthy projects include a WebTV platform, a QR card web application for government-issued IDs, and an innovative EMF detector website.
+            </div>
+            <div>
+                <h3>Creative Design Expertise ✨</h3>
+                <b>Meme Design(5+ years):</b> I have ideated and crafted memes that garnered significant attention on social media platforms. Several memes went viral on Instagram and were featured on one of India's largest meme pages. One meme even received recognition on @sunraybee's Reddit review YouTube video, showcasing my ability to create engaging content.<br>
+                <b>Prompt Engineering:</b> I have Beginer level Prompt Engineering Knowledge, here's the example of it.<br>
+                <b>Photo Editing:</b> I have extensive photo editing experience for 5+ years, proficient in Photoshop, Illustrator, Canva, Picsart, Figma.<br>
+                <b>Video Editing:</b> I have Beginer level Video Editing expertise in Davinci Resolve, Made a Cinematic Reel using my color grading, editing and sound design knowledge.<br>
+                <b>Sound Design,Music Production and Mixing Engineer(5+ years):</b> Made several Electronic Music tracks which are available on Spotify also made a score for Cinematic Reel on ig.<br> 
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="social">
+            <img src="behance.svg" onclick="window.location.href='https://www.behance.net/prathampatankar'">
+            <img src="linkedin.svg" onclick="window.location.href='https://www.linkedin.com/in/prathampatankar1234/'">
+            <img src="github.svg" onclick="window.location.href='https://github.com/praxham'">
+            <img src="instagram.svg" onclick="window.location.href='https://instagram.com/praxham'">
+        </div>
+        <div class="navbar">
+            <a href="#container" class="Home">/𑘢𑘿𑘨𑘎𑘩𑘿𑘢</a>
+            <a href="#container2" class="About">/𑘭𑘿𑘪𑘝𑘾𑘤𑘟𑘿𑘟𑘩</a>
+        </div>
+        <!-- विक्रोळीत बनलेले -->
+    </footer>
+    <script>
+        function setup () {
+                var canvas = createCanvas(350,350);
+                canvas.parent('origincanvas');
+                background(230);
+            }
+            function draw () {
+                let a = random(350);
+                let b = random(350);
+                let c = random(100,350);
+                let d = random(100,350);
+                let e = random(255);
+                let f = random(255);
+                let g = random(255);
+                noFill();
+                stroke(e,f,g);
+                rect(a,b,c,d);
+                fill(e,f,g,150)
+                ellipse(a,b,10,10);
+                line(175,175,a,b);
+            }
+    </script>
+</body>
+</html>
